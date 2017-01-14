@@ -17,6 +17,9 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
+                <li><a href="{{ url_for('momentpage') }}">Moment</a></li>
+                <li><a href="{{ url_for('user', name='CaiXiongkai') }}">User</a></li>
+                <li><a href="{{ url_for('databasepage') }}">DataBase</a></li>
             </ul>
         </div>
     </div>
@@ -25,6 +28,13 @@
 
 {% block content %}
 <div class="container">
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+
     {% block page_content %}{% endblock %}
 </div>
 {% endblock %}
